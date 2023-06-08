@@ -9,17 +9,17 @@ class LinearRegression:
     
     def fit(self, X, y):
         n_samples, n_features = X.shape
-        self.weights = np.zeroes(n_features)
+        self.weights = np.zeros(n_features)
         self.bias = 0
         for _ in range(self.n_iters):
             y_pred = np.dot(X, self.weights) + self.bias
 
-            dw = (1/n_samples) * np.dot(X, (y_pred -y)) #from partial derivation
+            dw = (1/n_samples) * np.dot(X.T, (y_pred -y)) #from partial derivation
             # dot contains summation
 
             db = (1/n_samples) * np.sum(y_pred - y)  # from partial derivation
 
-            self.weights = self.weight - self.lr * dw
+            self.weights = self.weights - self.lr * dw
             self.bias = self.bias - self.lr * db
 
 
