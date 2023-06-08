@@ -23,4 +23,6 @@ class LinearRegression:
             self.bias = self.bias - self.lr * db
 
 
-    def predict():
+    def predict(self, X):
+        y_predict = np.dot(X, self.weights) + self.bias
+        return y_predict
